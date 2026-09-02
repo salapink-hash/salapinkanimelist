@@ -1,6 +1,7 @@
 import { getAnimeResponse } from "@/libs/api-libs"
 import VideoPlayer from '@/components/Utilities/VideoPlayer'
 import Image from 'next/image'
+import Link from 'next/link'
 import { authUserSession } from "@/libs/auth-libs"
 import prisma from "@/libs/prisma"
 import CollectionButton from "@/components/AnimeList/CollectionButton"
@@ -129,17 +130,26 @@ export default async function AnimeDetail({ params }: { params: Promise<{ id: st
           
           <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
              {data.genres?.map((genre: any) => (
-                <span key={genre.mal_id} style={{
-                  background: 'rgba(99, 102, 241, 0.1)',
-                  color: 'var(--primary)',
-                  border: '1px solid rgba(99, 102, 241, 0.3)',
-                  padding: '0.4rem 1rem',
-                  borderRadius: '999px',
-                  fontSize: '0.85rem',
-                  fontWeight: 600
-                }}>
-                  {genre.name}
-                </span>
+                <Link 
+                  key={genre.mal_id} 
+                  href={`/genre/${genre.mal_id}?name=${encodeURIComponent(genre.name)}`}
+                  style={{
+                    background: 'rgba(99, 102, 241, 0.1)',
+                    color: 'var(--primary)',
+                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    padding: '0.4rem 1rem',
+                    borderRadius: '999px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer'
+                  }}
+                  className="genre-tag"
+                >
+                  #{genre.name}
+                </Link>
              ))}
           </div>
         </div>
