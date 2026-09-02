@@ -10,16 +10,56 @@ import CommentInput from "@/components/AnimeList/CommentInput"
 export default async function AnimeDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   
-  const anime = await getAnimeResponse(`anime/${id}`)
-  const data = anime.data
-  const user = await authUserSession()
+  let data = null
+  try {
+    const anime = await getAnimeResponse(`anime/${id}`)
+    data = anime?.data
+  } catch (err) {
+    console.error("Error fetching anime:", err)
+  }
+
+  if (!data) {
+    return (
+      <div className="container animate-fade-in" style={{ padding: '4rem 1.5rem', textAlign: 'center', minHeight: '60vh' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#fff', marginBottom: '1rem' }}>
+          Data Anime Tidak Ditemukan
+        </h2>
+        <p style={{ color: '#94a3b8', marginBottom: '2rem' }}>
+          Server API Jikan sedang sibuk / membatasi permintaan, atau anime dengan ID ini tidak tersedia.
+        </p>
+        <a 
+          href="/" 
+          style={{
+            display: 'inline-block',
+            padding: '0.75rem 1.5rem',
+            background: 'var(--primary)',
+            color: '#fff',
+            borderRadius: '999px',
+            textDecoration: 'none',
+            fontWeight: 600
+          }}
+        >
+          &larr; Kembali ke Beranda
+        </a>
+      </div>
+    )
+  }
+
+  let user = null
   let collection = null
 
-  if (user && user.email) {
-    collection = await prisma.collection.findFirst({
-      where: { user_email: user.email, anime_mal_id: id }
-    })
+  try {
+    user = await authUserSession()
+    if (user && user.email) {
+      collection = await prisma.collection.findFirst({
+        where: { user_email: user.email, anime_mal_id: id }
+      })
+    }
+  } catch (err) {
+    console.error("Error fetching user session/collection:", err)
   }
+
+  const imageUrl = data.images?.webp?.image_url || data.images?.jpg?.image_url || '/placeholder.png'
 
   return (
     <div className="container animate-fade-in" style={{ padding: '2rem 1.5rem', minHeight: '100vh' }}>
@@ -36,7 +76,7 @@ export default async function AnimeDetail({ params }: { params: Promise<{ id: st
         <div style={{ flex: '0 0 auto', width: '100%', maxWidth: '300px' }}>
           <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)', border: '1px solid var(--card-border)' }}>
             <Image
-              src={data.images.webp.image_url}
+              src={imageUrl}
               alt={data.title}
               width={300}
               height={450}

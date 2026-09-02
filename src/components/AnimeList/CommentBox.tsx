@@ -1,10 +1,15 @@
 import prisma from "@/libs/prisma"
 
 export default async function CommentBox({ anime_mal_id }: { anime_mal_id: string }) {
-  const comments = await prisma.comment.findMany({
-    where: { anime_mal_id },
-    orderBy: { createdAt: 'desc' }
-  })
+  let comments: any[] = []
+  try {
+    comments = await prisma.comment.findMany({
+      where: { anime_mal_id },
+      orderBy: { createdAt: 'desc' }
+    })
+  } catch (err) {
+    console.error("Error fetching comments:", err)
+  }
 
   if (!comments || comments.length === 0) {
     return (
