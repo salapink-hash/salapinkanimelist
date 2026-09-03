@@ -39,7 +39,7 @@ export default function SupportButton() {
             </p>
             
             <a
-              href="https://saweria.co"
+              href="https://saweria.co/salapink"
               target="_blank"
               rel="noopener noreferrer"
               style={{
