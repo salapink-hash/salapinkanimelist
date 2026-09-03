@@ -1,7 +1,7 @@
 name: Build Android APK
 
 on:
-  workflow_dispatch: # Memungkinkan tombol "Run workflow" manual di GitHub Actions
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -22,25 +22,33 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm ci || npm install
+      - name: Install Node Dependencies
+        env:
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/salapink?schema=public"
+          DIRECT_URL: "postgresql://postgres:postgres@localhost:5432/salapink?schema=public"
+        run: npm install --legacy-peer-deps
 
       - name: Sync Capacitor Android
         run: npx cap sync android
 
-      - name: Set Execution Permission for Gradlew
-        run: chmod +x ./android/gradlew
+      - name: Make Gradlew Executable
+        run: chmod +x android/gradlew
 
-      - name: Build APK with Gradle
+      - name: Build Debug APK
         run: |
           cd android
-          ./gradlew assembleDebug --stacktrace
+          ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
