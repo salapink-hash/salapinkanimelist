@@ -1,0 +1,10 @@
+{
+  "appId": "id.web.salapink.app",
+  "appName": "Salapink Animelist",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://salapink.web.id",
+    "cleartext": true
+  }
+}
