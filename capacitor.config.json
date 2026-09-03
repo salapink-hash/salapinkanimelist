@@ -5,6 +5,17 @@
   "bundledWebRuntime": false,
   "server": {
     "url": "https://salapink.web.id",
-    "cleartext": true
+    "cleartext": true,
+    "allowNavigation": [
+      "salapink.web.id",
+      "*.salapink.web.id",
+      "accounts.google.com",
+      "github.com",
+      "api.jikan.moe",
+      "saweria.co"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true
   }
 }
