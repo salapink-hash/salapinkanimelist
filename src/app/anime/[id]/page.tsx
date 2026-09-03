@@ -154,6 +154,63 @@ export default async function AnimeDetail({ params }: { params: Promise<{ id: st
                 </Link>
              ))}
           </div>
+
+          {/* Widget Belanja Merchandise & Manga */}
+          <div style={{
+            marginTop: '2rem',
+            background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%)',
+            border: '1px solid rgba(99, 102, 241, 0.3)',
+            borderRadius: '12px',
+            padding: '1.5rem',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+          }}>
+            <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              🛍️ Merchandise & Komik {data.title}
+            </h4>
+            <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '0 0 1rem 0' }}>
+              Dukung kreator dengan mengoleksi komik asli, action figure, kaos anime, dan pernak-pernik resmi:
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <a
+                href={`https://shopee.co.id/search?keyword=${encodeURIComponent(data.title + ' merchandise anime figure')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: '#ee4d2d',
+                  color: '#fff',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '6px',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                Cari di Shopee 🛒
+              </a>
+              <a
+                href={`https://www.tokopedia.com/search?st=product&q=${encodeURIComponent(data.title + ' anime figure')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: '#03ac0e',
+                  color: '#fff',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '6px',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                Cari di Tokopedia 📦
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
