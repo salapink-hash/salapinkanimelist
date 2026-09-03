@@ -6,6 +6,8 @@ import prisma from "@/libs/prisma"
 import { redirect } from "next/navigation"
 import DeleteCollectionButton from "@/components/Dashboard/DeleteCollectionButton"
 
+export const dynamic = 'force-dynamic'
+
 export default async function Collection() {
   const user = await authUserSession()
   

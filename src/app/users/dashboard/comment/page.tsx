@@ -5,6 +5,8 @@ import Link from "next/link"
 import { redirect } from "next/navigation"
 import DeleteCommentButton from "@/components/Dashboard/DeleteCommentButton"
 
+export const dynamic = 'force-dynamic'
+
 export default async function CommentPage() {
   const user = await authUserSession()
   

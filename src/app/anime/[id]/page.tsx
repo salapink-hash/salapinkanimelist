@@ -8,6 +8,8 @@ import CollectionButton from "@/components/AnimeList/CollectionButton"
 import CommentBox from "@/components/AnimeList/CommentBox"
 import CommentInput from "@/components/AnimeList/CommentInput"
 
+export const dynamic = 'force-dynamic'
+
 export default async function AnimeDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   

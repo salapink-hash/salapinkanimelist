@@ -30,6 +30,8 @@ export default function CommentInput({ anime_mal_id, user_email, username, anime
     if (postComment.isCreated) {
       setComment('')
       router.refresh()
+    } else {
+      alert('Gagal mengirim komentar. Pastikan database terhubung.')
     }
     
     setIsPosting(false)
