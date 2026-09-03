@@ -14,7 +14,7 @@ export default function Navbar() {
         gap: '1rem'
       }}>
         <Link href="/" className={styles.logo}>
-          salapink<span className="text-gradient">AnimeList</span>
+          Salapink<span className="text-gradient">Animelist</span>
         </Link>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <SearchInput />

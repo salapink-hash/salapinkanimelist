@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'CuyAnimeList - Premium Edition',
+  title: 'Salapink Animelist - Premium Edition',
   description: 'Top anime list application built with Next.js and Jikan API',
 }
 
