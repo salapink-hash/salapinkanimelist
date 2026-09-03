@@ -21,17 +21,20 @@ export default function AnimeList({ title, api, hideViewAll = false }: AnimeList
       </div>
       
       <div className={styles.grid}>
-        {api?.data?.map((anime: any) => (
-          <AnimeCard
-            key={anime.mal_id}
-            id={anime.mal_id}
-            title={anime.title}
-            image={anime.images.webp.image_url}
-            score={anime.score}
-            year={anime.year}
-            episodes={anime.episodes}
-          />
-        ))}
+        {api?.data?.map((anime: any, index: number) => {
+          const image = anime?.images?.webp?.image_url || anime?.images?.jpg?.image_url || '/placeholder.png'
+          return (
+            <AnimeCard
+              key={anime?.mal_id ? `${anime.mal_id}-${index}` : index}
+              id={anime?.mal_id}
+              title={anime?.title || 'Unknown Anime'}
+              image={image}
+              score={anime?.score}
+              year={anime?.year}
+              episodes={anime?.episodes}
+            />
+          )
+        })}
       </div>
     </section>
   )
