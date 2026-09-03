@@ -24,7 +24,7 @@ export default function SchedulePage() {
     const fetchSchedule = async () => {
       setLoading(true)
       try {
-        const res = await fetch(`https://api.jikan.moe/v4/schedules?filter=${activeDay}&limit=20`)
+        const res = await fetch(`/api/v1/schedules?day=${activeDay}`)
         const data = await res.json()
         setScheduleData(data?.data || [])
       } catch (err) {

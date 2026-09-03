@@ -47,23 +47,18 @@ export default function GachaPage() {
     setCopied(false)
 
     try {
-      const page = Math.floor(Math.random() * 8) + 1
-      const genreQuery = selectedGenre > 0 ? `&genres=${selectedGenre}` : ''
-      const url = `https://api.jikan.moe/v4/anime?order_by=popularity&sort=asc&page=${page}&limit=25${genreQuery}`
+      const genreParam = selectedGenre > 0 ? `?genre=${selectedGenre}` : ''
+      const response = await fetch(`/api/v1/gacha${genreParam}`)
+      const resJson = await response.json()
 
-      const response = await fetch(url)
-      const data = await response.json()
-
-      if (data?.data && data.data.length > 0) {
-        const randomIndex = Math.floor(Math.random() * data.data.length)
-        const chosen = data.data[randomIndex]
-        setResult(chosen)
+      if (resJson?.data) {
+        setResult(resJson.data)
       } else {
-        alert('Gagal mengambil data gacha. Silakan coba lagi!')
+        alert('Sedang banyak permintaan. Silakan klik tombol gacha sekali lagi!')
       }
     } catch (err) {
       console.error(err)
-      alert('Terjadi kesalahan koneksi. Silakan coba lagi!')
+      alert('Terjadi kesalahan. Silakan coba klik gacha sekali lagi!')
     } finally {
       setIsRolling(false)
     }
