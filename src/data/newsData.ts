@@ -314,5 +314,100 @@ Bagikan pendapat, ulasan singkat, atau teori cerita kamu di kolom komentar pada 
 ### 4. Filter Genre & Pencarian Cepat
 Gunakan filter genre (seperti *Shounen, Isekai, Romance, Mecha, Psychological*) atau kolom pencarian pintar di Navbar untuk mencari anime berdasarkan nama atau tahun rilis.
     `
+  },
+  {
+    slug: 'kupas-tuntas-alur-bleach-thousand-year-blood-war',
+    title: 'Kupas Tuntas Bleach Thousand-Year Blood War: Konflik Quincy, Yhwach, dan Bankai Terlarang',
+    excerpt: 'Simak fakta penting perang darah antara Soul Society dan Kekaisaran Wandenreich pimpinan Yhwach yang merevolusi animasi Bleach.',
+    date: '22 Agustus 2026',
+    author: 'Kaelen Redaksi',
+    category: 'Analisis',
+    readTime: '6 min baca',
+    image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&auto=format&fit=crop&q=80',
+    content: `
+Setelah penantian lebih dari satu dekade, kembalinya anime *Bleach: Thousand-Year Blood War (TYBW)* di bawah arahan langsung Tite Kubo dan Studio Pierrot Films berhasil menetapkan standar baru adaptasi shounen legendaris.
+
+### Asal Usul Dendam 1.000 Tahun Quincy
+Quincy yang dipimpin oleh sang kaisar Yhwach kembali dari bayang-bayang Seireitei (Schatten Bereich). Dendam pemusnahan bangsa Quincy oleh Shinigami ribuan tahun lalu dibalas dengan invasi kilat yang menewaskan banyak kapten Gotei 13, termasuk Kapten Komandan Yamamoto Genryuusai.
+
+### Poin Utama yang Membuat TYBW Begitu Istimewa:
+1. **Animasi Sinematik Format Layar Lebar:** Setiap episode dikerjakan dengan standar film bioskop, pencahayaan kontras tinggi, dan komposisi warna ungu-emas yang megah.
+2. **Pengungkapan Rahasia Masa Lalu Ichigo:** Darah Shinigami, Hollow, dan Quincy yang mengalir di tubuh Ichigo Kurosaki akhirnya terungkap secara gamblang.
+3. **Debut Bankai Legendaris:** Deretan Bankai yang belum pernah muncul di anime lama, seperti Bankai milik Shunsui Kyoraku, Kisuke Urahara, Kenpachi Zaraki, dan Rukia Kuchiki ditampilkan dengan efek visual memukau.
+
+TYBW adalah bukti nyata bagaimana adaptasi modern mampu mengangkat materi manga klasik menjadi tontonan spektakuler yang relevan bagi generasi baru.
+    `
+  },
+  {
+    slug: 'panduan-nonton-one-piece-arc-egghead-dan-final-saga',
+    title: 'Panduan Memasuki Final Saga One Piece: Misteri Abad Kekosongan di Pulau Egghead',
+    excerpt: 'Menjelang babak akhir petualangan Luffy dkk, Pulau Masa Depan Egghead membuka tabir rahasia terbesar dunia One Piece.',
+    date: '21 Agustus 2026',
+    author: 'Tim Redaksi Salapink',
+    category: 'Edukasi',
+    readTime: '6 min baca',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+    content: `
+Setelah kemenangan besar Monkey D. Luffy di Negeri Wano dan kebangkitan kekuatan Dewa Matahari Sun God Nika (Gear 5), cerita *One Piece* resmi memasuki babak pamungkasnya: **Final Saga**.
+
+Destinasi pertama Topi Jerami di Final Saga adalah **Pulau Egghead**, pulau masa depan milik ilmuwan terhebat dunia, Dr. Vegapunk.
+
+### Mengapa Arc Egghead Sangat Bersejarah?
+* **Pengungkapan Rahasia Buah Iblis:** Vegapunk akhirnya menjelaskan teori ilmiah di balik terciptanya Buah Iblis sebagai manifestasi dari harapan dan evolusi keinginan manusia.
+* **Misteri Abad Kekosongan (Void Century):** Pesan siaran global Vegapunk ke seluruh penjuru dunia membocorkan kebenaran perang kuno antara Kerajaan Kuno dan aliansi 20 Kerajaan pembentuk Pemerintah Dunia.
+* **Aksi Nyata Para Tetua Gorosei:** Untuk pertama kalinya dalam 25 tahun serialisasi, wujud monster iblis Yokai kelima tetua Gorosei terjun langsung ke medan pertempuran.
+
+Arc Egghead bukan sekadar petualangan biasa, melainkan pengungkapan domino yang akan menentukan nasib perang tahta dunia One Piece.
+    `
+  },
+  {
+    slug: 'rekomendasi-film-anime-studio-ghibli-terbaik',
+    title: 'Nostalgia & Kehangatan: 5 Film Animasi Terbaik Studio Ghibli yang Wajib Ditonton Sekali Seumur Hidup',
+    excerpt: 'Karya magis Hayao Miyazaki dan Isao Takahata yang menghangatkan jiwa, menyentuh hati, dan tak lekang oleh zaman.',
+    date: '20 Agustus 2026',
+    author: 'Kaelen Redaksi',
+    category: 'Rekomendasi',
+    readTime: '5 min baca',
+    image: 'https://images.unsplash.com/photo-1511497584788-87676104235f?w=800&auto=format&fit=crop&q=80',
+    content: `
+Studio Ghibli selalu memiliki tempat istimewa di hati para penikmat sinema animasi dunia. Gambar tangan tradisional yang detail, alunan musik indah dari komposer Joe Hisaishi, serta pesan moral tentang alam dan kemanusiaan membuat karya mereka abadi.
+
+Berikut adalah film Studio Ghibli terbaik yang wajib masuk daftar tontonan kamu:
+
+### 1. Spirited Away (Sen to Chihiro no Kamikakushi)
+Pemenang Academy Award (Oscar) yang mengisahkan Chihiro, gadis kecil yang tersesat di pemandian para dewa dan roh. Sebuah alegori indah tentang kemandirian anak-anak dan proses mendewasa.
+
+### 2. Princess Mononoke (Mononoke Hime)
+Kisah benturan antara kemajuan peradaban industri manusia dengan kelestarian hutan para dewa kuno. Film ini tidak membagi dunia menjadi hitam-putih, melainkan mengajak kita merenungkan keharmonisan hidup berdampingan.
+
+### 3. Howl's Moving Castle (Hauru no Ugoku Shiro)
+Petualangan cinta magis antara Sophie yang dikutuk menjadi nenek tua dan penyihir tampan Howl yang rapuh. Kastil bergerak yang berjalan di atas bukit adalah salah satu desain terikonik dalam sejarah animasi.
+
+### 4. Grave of the Fireflies (Hotaru no Haka)
+Karya legendaris Isao Takahata tentang perjuangan dua bersaudara Seita dan Setsuko bertahan hidup di tengah tragedi Perang Dunia II. Sebuah karya anti-perang yang paling menyayat hati.
+
+### 5. The Boy and the Heron (Kimitachi wa Dou Ikiru ka)
+Mahakarya terbaru Hayao Miyazaki yang memenangkan Oscar 2024. Film semi-otobiografi yang sarat akan simbolisme filosofis mengenai penerimaan duka cita dan keberanian membangun dunia yang lebih baik.
+    `
+  },
+  {
+    slug: 'alasan-chainsaw-man-movie-reze-arc-sangat-dinantikan',
+    title: 'Mengapa Film Chainsaw Man: Reze Arc Menjadi Salah Satu Film Anime Paling Ditunggu?',
+    excerpt: 'Kombinasi romansa tragis, ledakan bom sinematik, dan eksplorasi trauma masa lalu Denji dalam format layar lebar bioskop.',
+    date: '19 Agustus 2026',
+    author: 'Admin Salapink',
+    category: 'Ulasan',
+    readTime: '4 min baca',
+    image: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80',
+    content: `
+Pengumuman bahwa *Chainsaw Man* mengadaptasi **Reze Arc (Bomb Devil Arc)** ke dalam format film bioskop disambut dengan antusiasme luar biasa dari komunitas manga dan anime global.
+
+### Mengapa Arc Ini Sangat Dicintai Pembaca Manga?
+1. **Dinamika Cinta Pertama Denji:** Di balik sosok Denji yang polos dan sering dieksploitasi oleh Makima, pertemuannya dengan Reze di kedai kopi menghadirkan momen kehangatan tulus seorang remaja biasa yang belum pernah Denji rasakan seumur hidupnya.
+2. **Karakter Reze yang Kompleks:** Reze bukan sekadar antagonis biasa. Latar belakangnya sebagai "anjing militer Uni Soviet" mencerminkan kemiripan nasib dengan Denji: dua anak yang masa kecilnya dirampas demi dijadikan senjata pembunuh.
+3. **Skala Pertempuran Spektakuler:** Pertarungan antara Chainsaw Devil melawan Bomb Devil di tengah kota Tokyo menuntut visual ledakan, fluiditas cairan, dan kehancuran gedung yang sangat cocok dimaksimalkan lewat layar lebar bioskop dengan tata suara Dolby Atmos.
+
+Reze Arc adalah titik balik krusial yang mendefinisikan pendewasaan emosional Denji di sepanjang seri Chainsaw Man.
+    `
   }
 ]

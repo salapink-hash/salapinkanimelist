@@ -44,6 +44,7 @@ export default function Footer() {
             <li><Link href="/about" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Tentang Kami</Link></li>
             <li><Link href="/privacy-policy" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Kebijakan Privasi</Link></li>
             <li><Link href="/terms" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Syarat & Ketentuan</Link></li>
+            <li><Link href="/disclaimer" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Penafian & DMCA</Link></li>
             <li><Link href="/contact" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Hubungi Kami</Link></li>
             <li><a href="https://saweria.co/salapink" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 600 }}>☕ Donasi Saweria</a></li>
           </ul>
@@ -66,6 +67,7 @@ export default function Footer() {
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <Link href="/privacy-policy" style={{ color: '#94a3b8' }}>Privacy</Link>
           <Link href="/terms" style={{ color: '#94a3b8' }}>Terms</Link>
+          <Link href="/disclaimer" style={{ color: '#94a3b8' }}>DMCA</Link>
           <Link href="/contact" style={{ color: '#94a3b8' }}>Contact</Link>
         </div>
       </div>
