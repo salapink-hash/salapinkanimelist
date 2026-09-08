@@ -21,11 +21,18 @@ export default function SearchInput() {
     <form className={styles.searchForm} onSubmit={handleSearch}>
       <input
         type="text"
+        name="search"
+        autoComplete="off"
+        suppressHydrationWarning
         placeholder="Search anime..."
         className={styles.searchInput}
         ref={searchRef}
       />
-      <button type="submit" style={{ background: 'none', border: 'none', padding: 0, margin: 0, display: 'flex', alignItems: 'center' }}>
+      <button 
+        type="submit" 
+        suppressHydrationWarning
+        style={{ background: 'none', border: 'none', padding: 0, margin: 0, display: 'flex', alignItems: 'center' }}
+      >
         <svg
           className={styles.searchIcon}
           width="20"

@@ -17,6 +17,9 @@ export default function MovieSearchInput() {
     <form onSubmit={handleSearch} style={{ position: "relative", width: "100%", maxWidth: "450px" }}>
       <input
         type="text"
+        name="q"
+        autoComplete="off"
+        suppressHydrationWarning
         placeholder="Cari film (contoh: Spider-Man, Avengers, Barbie)..."
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
@@ -35,6 +38,7 @@ export default function MovieSearchInput() {
       />
       <button
         type="submit"
+        suppressHydrationWarning
         style={{
           position: "absolute",
           right: "6px",

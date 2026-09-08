@@ -75,6 +75,7 @@ export default function SupportButton() {
         )}
 
         <button
+          suppressHydrationWarning
           onClick={() => setIsOpen(!isOpen)}
           style={{
             background: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
