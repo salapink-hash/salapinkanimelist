@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getMovieDetail, getTMDBImageUrl } from "@/libs/movie-api";
 import MoviePlayer from "@/components/Movies/MoviePlayer";
 import MovieCard from "@/components/Movies/MovieCard";
+import WatchTracker from "@/components/Movies/WatchTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -93,6 +94,9 @@ export default async function WatchMoviePage({
           <span>/</span>
           <span style={{ color: "#818cf8", fontWeight: 700 }}>{movie.title}</span>
         </div>
+
+        {/* Watch History Tracker */}
+        <WatchTracker movie={movie} />
 
         {/* Video Player Box */}
         <MoviePlayer tmdbId={id} title={movie.title} />

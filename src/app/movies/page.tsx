@@ -11,6 +11,7 @@ import {
 import MovieCard from "@/components/Movies/MovieCard";
 import MovieSearchInput from "@/components/Movies/MovieSearchInput";
 import StreamingNetworks from "@/components/Movies/StreamingNetworks";
+import ContinueWatching from "@/components/Movies/ContinueWatching";
 
 export const dynamic = "force-dynamic";
 
@@ -146,7 +147,10 @@ export default async function MoviesPage() {
         </section>
       )}
 
-      <div className="container" style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
+      <div className="container" style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
+        {/* Continue Watching / Lanjutkan Menonton (Appears automatically when user has watched movies) */}
+        <ContinueWatching />
+
         {/* Streaming Platform Provider Row (Netflix, Prime, Disney+, Apple TV, Hulu, etc.) */}
         <StreamingNetworks initialMovies={netflixMovies} />
 
