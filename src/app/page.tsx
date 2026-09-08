@@ -5,6 +5,7 @@ import { getAnimeResponse, getNestedAnimeResponse, reproduce } from '@/libs/api-
 import { getTrendingMovies } from '@/libs/movie-api'
 import MovieCard from '@/components/Movies/MovieCard'
 import { articles } from '@/data/newsData'
+import AdBanner from '@/components/Utilities/AdBanner'
 
 export default async function Home() {
   const topAnime = await getAnimeResponse('top/anime', 'limit=8')
@@ -259,6 +260,9 @@ export default async function Home() {
         </div>
       </section>
       
+      {/* Adsterra Native Banner */}
+      <AdBanner />
+
       {/* Recommended Section */}
       <section className="container animate-fade-in" style={{ padding: '1rem 1.5rem 4rem 1.5rem' }}>
         <AnimeList title="Rekomendasi Pilihan" api={recommendedAnime} hideViewAll={true} />
@@ -266,3 +270,4 @@ export default async function Home() {
     </>
   )
 }
+
