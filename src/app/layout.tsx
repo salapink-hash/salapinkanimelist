@@ -64,10 +64,17 @@ export default function RootLayout({
     <html lang="id" suppressHydrationWarning>
       <head>
         {/* Schema.org Structured Data */}
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {/* Monetag Ad Tag */}
+        <Script
+          id="monetag-tag"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='11756229',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
+          }}
         />
       </head>
       <body suppressHydrationWarning>
