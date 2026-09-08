@@ -21,6 +21,24 @@ export default function Navbar() {
             <Link href="/" style={{ color: '#cbd5e1', fontSize: '0.95rem', fontWeight: 600, textDecoration: 'none' }}>
               Beranda
             </Link>
+            <Link 
+              href="/movies" 
+              style={{ 
+                background: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)', 
+                color: '#fff', 
+                fontSize: '0.9rem', 
+                fontWeight: 800, 
+                textDecoration: 'none',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '999px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                boxShadow: '0 2px 10px rgba(99, 102, 241, 0.4)'
+              }}
+            >
+              🎬 Cinema
+            </Link>
             <Link href="/gacha" style={{ color: 'var(--primary)', fontSize: '0.95rem', fontWeight: 700, textDecoration: 'none' }}>
               🎲 Gacha
             </Link>

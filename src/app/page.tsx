@@ -2,10 +2,13 @@ import AnimeList from '@/components/AnimeList'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAnimeResponse, getNestedAnimeResponse, reproduce } from '@/libs/api-libs'
+import { getTrendingMovies } from '@/libs/movie-api'
+import MovieCard from '@/components/Movies/MovieCard'
 import { articles } from '@/data/newsData'
 
 export default async function Home() {
   const topAnime = await getAnimeResponse('top/anime', 'limit=8')
+  const trendingMovies = await getTrendingMovies('day')
   
   let recommendedAnime: any = { data: [] }
   try {
@@ -110,6 +113,52 @@ export default async function Home() {
       <section className="container animate-fade-in" style={{ padding: '2rem 1.5rem' }}>
         <AnimeList title="Paling Populer" api={topAnime} />
       </section>
+
+      {/* Salapink Cinema / Streaming Film Section */}
+      {trendingMovies && trendingMovies.length > 0 && (
+        <section className="container animate-fade-in" style={{ padding: '2rem 1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                🎬 Cinema & Film Bioskop Populer
+              </h2>
+              <p style={{ color: '#94a3b8', margin: '0.3rem 0 0 0', fontSize: '0.95rem' }}>
+                Nonton film box office, Marvel, Spider-Man, dan anime movie langsung dengan subtitle Indonesia.
+              </p>
+            </div>
+            <Link 
+              href="/movies" 
+              style={{ 
+                background: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)', 
+                color: '#fff', 
+                fontWeight: 700, 
+                fontSize: '0.9rem',
+                padding: '0.5rem 1.25rem',
+                borderRadius: '999px',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                boxShadow: '0 4px 15px rgba(99, 102, 241, 0.3)'
+              }}
+            >
+              Buka Cinema &rarr;
+            </Link>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
+              gap: '1.25rem',
+            }}
+          >
+            {trendingMovies.slice(0, 6).map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Featured Editorial News Section (Crucial for AdSense) */}
       <section className="container animate-fade-in" style={{ padding: '2rem 1.5rem' }}>
