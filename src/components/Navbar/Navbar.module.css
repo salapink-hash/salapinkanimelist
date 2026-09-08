@@ -1,13 +1,13 @@
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(15, 17, 26, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1.25rem 0;
-  transition: var(--transition);
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 9, 14, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.9rem 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navContainer {
@@ -17,17 +17,13 @@
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.logo span {
-  font-weight: 400;
-  color: #94a3b8;
+  text-decoration: none;
 }
 
 .searchForm {
@@ -40,21 +36,21 @@
 
 .searchInput {
   width: 100%;
-  padding: 0.75rem 1.25rem;
+  padding: 0.65rem 2.8rem 0.65rem 1.15rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: var(--foreground);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   outline: none;
-  transition: var(--transition);
+  transition: all 0.25s ease;
 }
 
 .searchInput:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
 }
 
 .searchInput::placeholder {
@@ -63,7 +59,7 @@
 
 .searchIcon {
   position: absolute;
-  right: 1.25rem;
+  right: 1.1rem;
   color: #64748b;
   pointer-events: none;
 }
