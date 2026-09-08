@@ -5,19 +5,22 @@ import {
   getNowPlayingMovies,
   getTopRatedMovies,
   getAnimationMovies,
+  getMediaByProvider,
   getTMDBImageUrl,
 } from "@/libs/movie-api";
 import MovieCard from "@/components/Movies/MovieCard";
 import MovieSearchInput from "@/components/Movies/MovieSearchInput";
+import StreamingNetworks from "@/components/Movies/StreamingNetworks";
 
 export const dynamic = "force-dynamic";
 
 export default async function MoviesPage() {
-  const [trending, nowPlaying, topRated, animation] = await Promise.all([
+  const [trending, nowPlaying, topRated, animation, netflixMovies] = await Promise.all([
     getTrendingMovies("week"),
     getNowPlayingMovies(1),
     getTopRatedMovies(1),
     getAnimationMovies(1),
+    getMediaByProvider(8, "movie", 1),
   ]);
 
   const featured = trending[0] || nowPlaying[0];
@@ -144,6 +147,9 @@ export default async function MoviesPage() {
       )}
 
       <div className="container" style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
+        {/* Streaming Platform Provider Row (Netflix, Prime, Disney+, Apple TV, Hulu, etc.) */}
+        <StreamingNetworks initialMovies={netflixMovies} />
+
         {/* Section: Trending Cinema */}
         <section>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>

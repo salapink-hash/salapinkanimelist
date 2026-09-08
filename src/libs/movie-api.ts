@@ -112,6 +112,36 @@ export async function searchMovies(query: string, page: number = 1): Promise<Mov
   return data?.results || [];
 }
 
+// Get Movies or Series by Streaming Provider (Netflix, Prime, Disney+, Apple TV, etc.)
+export async function getMediaByProvider(
+  providerId: number,
+  mediaType: "movie" | "tv" = "movie",
+  page: number = 1
+): Promise<MovieItem[]> {
+  const endpoint = `discover/${mediaType}`;
+  const data = await getTMDBData(
+    endpoint,
+    `with_watch_providers=${providerId}&watch_region=US&sort_by=popularity.desc&page=${page}`
+  );
+  
+  if (!data?.results) return [];
+
+  // Normalize TV show results (which have 'name' instead of 'title')
+  return data.results.map((item: any) => ({
+    id: item.id,
+    title: item.title || item.name || "Untitled",
+    original_title: item.original_title || item.original_name,
+    overview: item.overview || "",
+    poster_path: item.poster_path,
+    backdrop_path: item.backdrop_path,
+    release_date: item.release_date || item.first_air_date || "",
+    vote_average: item.vote_average || 0,
+    vote_count: item.vote_count || 0,
+    popularity: item.popularity || 0,
+    media_type: mediaType,
+  }));
+}
+
 // Get Movie Details with Credits, Videos, and Similar
 export async function getMovieDetail(id: string | number): Promise<MovieDetail | null> {
   const data = await getTMDBData(`movie/${id}`, `append_to_response=videos,credits,similar,recommendations`);
