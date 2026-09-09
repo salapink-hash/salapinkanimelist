@@ -53,10 +53,14 @@ const SERVERS: ServerOption[] = [
   },
 ];
 
+// Ganti link ini dengan Direct Link Iklan kamu
+const DEFAULT_AD_URL = "https://www.google.com";
+
 export default function MoviePlayer({ tmdbId, title }: MoviePlayerProps) {
   const [activeServer, setActiveServer] = useState<string>("vidlink");
   const [isTheater, setIsTheater] = useState<boolean>(false);
   const [refreshKey, setRefreshKey] = useState<number>(0);
+  const [hasClickedAd, setHasClickedAd] = useState<boolean>(false);
 
   const currentServer = SERVERS.find((s) => s.id === activeServer) || SERVERS[0];
   const streamUrl = currentServer.getUrl(tmdbId);
@@ -121,7 +125,7 @@ export default function MoviePlayer({ tmdbId, title }: MoviePlayerProps) {
               : "0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.18)",
           }}
         >
-          {/* Iframe 16:9 */}
+          {/* Iframe 16:9 & Ad Overlay */}
           <div
             style={{
               position: "relative",
@@ -141,10 +145,91 @@ export default function MoviePlayer({ tmdbId, title }: MoviePlayerProps) {
                 width: "100%",
                 height: "100%",
                 border: "none",
+                pointerEvents: hasClickedAd ? "auto" : "none", // Prevent clicking iframe through overlay
               }}
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             />
+
+            {/* LK21-Style Ad Overlay */}
+            {!hasClickedAd && (
+              <div
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.open(DEFAULT_AD_URL, "_blank", "noopener,noreferrer");
+                  }
+                  setHasClickedAd(true);
+                }}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 20,
+                  backgroundColor: "rgba(15, 17, 23, 0.94)",
+                  backdropFilter: "blur(3px)",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: "1rem",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                  userSelect: "none",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "rgba(30, 41, 59, 0.85)",
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    borderRadius: "8px",
+                    padding: "1rem 1.2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "0.6rem",
+                    maxWidth: "80%",
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <h4
+                    style={{
+                      margin: 0,
+                      fontSize: "1rem",
+                      fontWeight: 700,
+                      color: "#ffffff",
+                      letterSpacing: "0.2px",
+                    }}
+                  >
+                    Klik Di Mana Saja untuk Memulai Film
+                  </h4>
+
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "0.85rem",
+                      fontStyle: "italic",
+                      color: "#cbd5e1",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    &ldquo;Terima kasih sudah mengklik ku 1 kali, untuk menampilkan iklan dan <strong>Play Movie</strong>, mudah rezeki dan sehat terus buat kamu. Aamiin&rdquo;
+                  </p>
+
+                  <div
+                    style={{
+                      marginTop: "0.5rem",
+                      fontSize: "0.75rem",
+                      fontWeight: 800,
+                      color: "#eab308",
+                      letterSpacing: "0.8px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    THIS PLAYER CONTAINS ADS
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Player Toolbar */}
