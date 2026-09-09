@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SupportButton from '@/components/Utilities/SupportButton'
 import CookieConsent from '@/components/Utilities/CookieConsent'
+import AdBanner from '@/components/Utilities/AdBanner'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://salapink.web.id'),
@@ -88,6 +89,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
+        <AdBanner />
         <Footer />
         <SupportButton />
         <CookieConsent />

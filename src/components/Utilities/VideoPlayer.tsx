@@ -1,82 +1,223 @@
 'use client'
 
 import { useState } from 'react'
-import YouTube from 'react-youtube'
+import YouTube, { YouTubeProps } from 'react-youtube'
 
 interface VideoPlayerProps {
   youtubeId: string
+  adUrl?: string
 }
 
-export default function VideoPlayer({ youtubeId }: VideoPlayerProps) {
+// Ganti link ini dengan Direct Link Iklan kamu (Monetag, Adsterra, Shopee Affiliate, dll)
+const DEFAULT_AD_URL = 'https://www.google.com'
+
+export default function VideoPlayer({ 
+  youtubeId, 
+  adUrl = DEFAULT_AD_URL 
+}: VideoPlayerProps) {
   const [isOpen, setIsOpen] = useState(true)
+  const [hasClickedAd, setHasClickedAd] = useState(false)
+  const [player, setPlayer] = useState<any>(null)
 
   const handleVideoPlayer = () => {
     setIsOpen((prevState) => !prevState)
   }
 
-  const option = {
-    width: '100%',
-    height: '250',
+  const handleOverlayClick = () => {
+    // 1. Buka link iklan di tab baru
+    if (typeof window !== 'undefined' && adUrl) {
+      window.open(adUrl, '_blank', 'noopener,noreferrer')
+    }
+
+    // 2. Hilangkan overlay iklan
+    setHasClickedAd(true)
+
+    // 3. Otomatis mulai putar video
+    if (player) {
+      try {
+        player.playVideo()
+      } catch (err) {
+        console.error('Auto-play error:', err)
+      }
+    }
   }
 
-  const Player = () => {
-    return (
-      <div className="fixed bottom-2 right-2 w-[300px] z-50 bg-[#1e293b] rounded-lg shadow-xl overflow-hidden transition-all duration-300">
-        <div className="flex justify-between items-center p-2 bg-[#0f111a]">
-          <h3 className="text-sm font-semibold text-white mb-0 mt-0">Trailer</h3>
-          <button
-            onClick={handleVideoPlayer}
-            className="text-white hover:text-red-500 bg-transparent border-none cursor-pointer font-bold px-2"
-          >
-            X
-          </button>
+  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
+    setPlayer(event.target)
+    // Pause di awal sampai user klik overlay
+    event.target.pauseVideo()
+  }
+
+  return isOpen ? (
+    <div
+      style={{
+        position: 'fixed',
+        bottom: '1rem',
+        right: '1rem',
+        width: '340px',
+        maxWidth: 'calc(100vw - 2rem)',
+        zIndex: 50,
+        backgroundColor: '#111827',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 20px 30px -10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(99, 102, 241, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s ease',
+      }}
+    >
+      {/* Header Player */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '0.6rem 1rem',
+          backgroundColor: '#0f172a',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ef4444', display: 'inline-block' }} />
+          <h3 style={{ margin: 0, fontSize: '0.85rem', color: '#f8fafc', fontWeight: 600 }}>Trailer Anime</h3>
         </div>
+        <button
+          onClick={handleVideoPlayer}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: '#94a3b8',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            fontSize: '1rem',
+            padding: '2px 6px',
+            borderRadius: '4px',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#ef4444')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Video & Overlay Wrapper */}
+      <div style={{ position: 'relative', width: '100%', height: '200px', backgroundColor: '#000' }}>
         <YouTube
           videoId={youtubeId}
-          onReady={(event) => event.target.pauseVideo()}
-          opts={option}
+          onReady={onPlayerReady}
+          opts={{
+            width: '100%',
+            height: '200',
+            playerVars: {
+              autoplay: 0,
+              modestbranding: 1,
+              rel: 0,
+            },
+          }}
         />
-      </div>
-    )
-  }
 
-  const ButtonOpenTrailer = () => {
-    return (
-      <button
-        onClick={handleVideoPlayer}
-        className="fixed bottom-5 right-5 w-auto bg-[#6366f1] hover:bg-[#4f46e5] text-white shadow-lg rounded-full px-4 py-2 border-none cursor-pointer font-semibold transition-all duration-300 z-50"
-      >
-        Tonton Trailer
-      </button>
-    )
-  }
+        {/* LK21-Style Ad Overlay */}
+        {!hasClickedAd && (
+          <div
+            onClick={handleOverlayClick}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 10,
+              backgroundColor: 'rgba(15, 17, 23, 0.94)',
+              backdropFilter: 'blur(3px)',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '1rem',
+              textAlign: 'center',
+              boxSizing: 'border-box',
+              userSelect: 'none',
+            }}
+          >
+            {/* Box Card */}
+            <div
+              style={{
+                backgroundColor: 'rgba(30, 41, 59, 0.85)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '8px',
+                padding: '0.75rem 0.85rem',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.4rem',
+                width: '92%',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
+              }}
+            >
+              <h4
+                style={{
+                  margin: 0,
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  letterSpacing: '0.2px',
+                }}
+              >
+                Klik Di Mana Saja untuk Memulai Film
+              </h4>
 
-  // We fall back to standard CSS since tailwind isn't configured for this project!
-  // Wait, I should write standard CSS or inline styles for this project.
-  return isOpen ? (
-    <div style={{ position: 'fixed', bottom: '1rem', right: '1rem', width: '320px', zIndex: 50, backgroundColor: 'var(--card-bg)', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)', border: '1px solid var(--card-border)' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem 1rem', backgroundColor: '#0f111a' }}>
-        <h3 style={{ margin: 0, fontSize: '0.9rem', color: '#fff' }}>Trailer</h3>
-        <button onClick={handleVideoPlayer} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontWeight: 'bold' }}>X</button>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '0.68rem',
+                  fontStyle: 'italic',
+                  color: '#cbd5e1',
+                  lineHeight: '1.3',
+                }}
+              >
+                &ldquo;Terima kasih sudah mengklik ku 1 kali, untuk menampilkan iklan dan <strong>Play Movie</strong>, mudah rezeki dan sehat terus buat kamu. Aamiin&rdquo;
+              </p>
+
+              <div
+                style={{
+                  marginTop: '0.2rem',
+                  fontSize: '0.65rem',
+                  fontWeight: 800,
+                  color: '#eab308',
+                  letterSpacing: '0.6px',
+                  textTransform: 'uppercase',
+                }}
+              >
+                THIS PLAYER CONTAINS ADS
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      <YouTube
-        videoId={youtubeId}
-        onReady={(event) => event.target.pauseVideo()}
-        opts={{ width: '100%', height: '200' }}
-      />
     </div>
   ) : (
     <button
       onClick={handleVideoPlayer}
       style={{
-        position: 'fixed', bottom: '1.5rem', right: '1.5rem', zIndex: 50,
-        backgroundColor: 'var(--primary)', color: '#fff', border: 'none',
-        padding: '0.75rem 1.5rem', borderRadius: '999px', cursor: 'pointer',
-        fontWeight: 'bold', boxShadow: '0 4px 12px rgba(99, 102, 241, 0.4)',
-        transition: 'var(--transition)'
+        position: 'fixed',
+        bottom: '1.5rem',
+        right: '1.5rem',
+        zIndex: 50,
+        backgroundColor: '#6366f1',
+        color: '#fff',
+        border: 'none',
+        padding: '0.75rem 1.5rem',
+        borderRadius: '999px',
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        fontSize: '0.9rem',
+        boxShadow: '0 4px 15px rgba(99, 102, 241, 0.4)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        transition: 'all 0.2s ease',
       }}
     >
-      Tonton Trailer
+      🎬 Tonton Trailer
     </button>
   )
 }
+
