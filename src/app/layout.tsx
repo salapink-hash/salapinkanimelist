@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import SupportButton from '@/components/Utilities/SupportButton'
 import CookieConsent from '@/components/Utilities/CookieConsent'
 import AdBanner from '@/components/Utilities/AdBanner'
+import TelegramButton from '@/components/Utilities/TelegramButton'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://salapink.web.id'),
@@ -92,6 +93,7 @@ export default function RootLayout({
         <AdBanner />
         <Footer />
         <SupportButton />
+        <TelegramButton />
         <CookieConsent />
       </body>
     </html>

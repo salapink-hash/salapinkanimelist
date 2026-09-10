@@ -19,10 +19,10 @@ export default function Footer() {
         {/* Brand & About */}
         <div>
           <Link href="/" style={{ textDecoration: 'none', fontSize: '1.4rem', fontWeight: 800, color: '#fff', display: 'inline-block', marginBottom: '1rem' }}>
-            Salapink<span className="text-gradient">Animelist</span>
+            Salapink<span className="text-gradient">Cinema</span>
           </Link>
           <p style={{ lineHeight: 1.6, color: '#94a3b8' }}>
-            Portal referensi data anime terlengkap dan platform komunitas wibu Indonesia. Temukan anime favorit, baca berita terkini, dan buat koleksi pribadimu.
+            Nonton streaming film bioskop box office terbaru dan serial Drama Korea (Drakor) terlengkap dengan subtitle Indonesia kualitas jernih Full HD tanpa buffering.
           </p>
         </div>
 
@@ -31,21 +31,31 @@ export default function Footer() {
           <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700, marginBottom: '1rem' }}>Jelajahi</h4>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
             <li><Link href="/" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Beranda</Link></li>
-            <li><Link href="/populer" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Anime Terpopuler</Link></li>
-            <li><Link href="/news" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Berita & Artikel</Link></li>
-            <li><Link href="/users/dashboard" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Dashboard Saya</Link></li>
+            <li><Link href="/movies" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Film Bioskop</Link></li>
+            <li><Link href="/movies/search?q=korean" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Drama Korea (Drakor)</Link></li>
+            <li><Link href="/populer" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Film Populer</Link></li>
+            <li><Link href="/news" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Berita & Sinopsis</Link></li>
           </ul>
         </div>
 
-        {/* Legal & Informasi */}
+        {/* Komunitas & Bantuan */}
         <div>
-          <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700, marginBottom: '1rem' }}>Legal & Bantuan</h4>
+          <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700, marginBottom: '1rem' }}>Komunitas & Info</h4>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            <li>
+              <a
+                href="https://t.me/salapinkcinema"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+              >
+                ✈️ Saluran Telegram Resmi
+              </a>
+            </li>
             <li><Link href="/about" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Tentang Kami</Link></li>
             <li><Link href="/privacy-policy" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Kebijakan Privasi</Link></li>
             <li><Link href="/terms" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Syarat & Ketentuan</Link></li>
             <li><Link href="/disclaimer" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Penafian & DMCA</Link></li>
-            <li><Link href="/contact" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Hubungi Kami</Link></li>
             <li><a href="https://saweria.co/salapink" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 600 }}>☕ Donasi Saweria</a></li>
           </ul>
         </div>
@@ -62,13 +72,12 @@ export default function Footer() {
         fontSize: '0.85rem'
       }}>
         <p style={{ margin: 0 }}>
-          &copy; {new Date().getFullYear()} <strong>Salapink Animelist</strong>. All Rights Reserved. Data provided by Jikan API.
+          &copy; {new Date().getFullYear()} <strong>Salapink Cinema</strong>. All Rights Reserved.
         </p>
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <Link href="/privacy-policy" style={{ color: '#94a3b8' }}>Privacy</Link>
           <Link href="/terms" style={{ color: '#94a3b8' }}>Terms</Link>
           <Link href="/disclaimer" style={{ color: '#94a3b8' }}>DMCA</Link>
-          <Link href="/contact" style={{ color: '#94a3b8' }}>Contact</Link>
         </div>
       </div>
     </footer>
