@@ -13,7 +13,7 @@ export default function SearchInput() {
     const keyword = searchRef.current?.value
 
     if (keyword && keyword.trim() !== '') {
-      router.push(`/search/${keyword.trim()}`)
+      router.push(`/movies/search?q=${encodeURIComponent(keyword.trim())}`)
     }
   }
 
@@ -24,7 +24,7 @@ export default function SearchInput() {
         name="search"
         autoComplete="off"
         suppressHydrationWarning
-        placeholder="Search anime..."
+        placeholder="Cari film, drakor, serial..."
         className={styles.searchInput}
         ref={searchRef}
       />

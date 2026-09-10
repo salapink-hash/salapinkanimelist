@@ -10,25 +10,25 @@ import AdBanner from '@/components/Utilities/AdBanner'
 export const metadata: Metadata = {
   metadataBase: new URL('https://salapink.web.id'),
   title: {
-    default: 'Salapink Animelist - Portal Komunitas & Informasi Anime Terlengkap',
-    template: '%s | Salapink Animelist'
+    default: 'Salapink Cinema - Nonton Streaming Film Bioskop & Drama Korea Sub Indo',
+    template: '%s | Salapink Cinema'
   },
-  description: 'Portal referensi anime terlengkap di Indonesia. Temukan ribuan data anime, jadwal rilis tayang, berita terkini, ulasan mendalam, dan kelola koleksi anime favoritmu.',
-  keywords: ['anime', 'anime list indonesia', 'rekomendasi anime', 'jadwal anime', 'berita anime', 'salapink animelist', 'database anime'],
-  authors: [{ name: 'Salapink Media Editorial' }],
-  creator: 'Salapink Animelist',
+  description: 'Nonton streaming film bioskop terbaru, box office, dan serial Drama Korea (Drakor) terlengkap dengan subtitle Indonesia kualitas jernih Full HD gratis.',
+  keywords: ['nonton film bioskop', 'streaming film sub indo', 'drama korea terbaru', 'drakor sub indo', 'lk21', 'salapink cinema', 'indoxxi', 'rebahin'],
+  authors: [{ name: 'Salapink Cinema Editorial' }],
+  creator: 'Salapink Cinema',
   openGraph: {
     type: 'website',
     locale: 'id_ID',
     url: 'https://salapink.web.id',
-    siteName: 'Salapink Animelist',
-    title: 'Salapink Animelist - Portal Komunitas & Informasi Anime Terlengkap',
-    description: 'Temukan ribuan data anime, jadwal tayang hari ini, ulasan mendalam, dan simpan koleksi tontonanmu.',
+    siteName: 'Salapink Cinema',
+    title: 'Salapink Cinema - Nonton Streaming Film Bioskop & Drama Korea Sub Indo',
+    description: 'Nonton streaming film bioskop box office dan serial drama korea terlengkap subtitle Indonesia.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Salapink Animelist - Portal Komunitas Anime Terlengkap',
-    description: 'Eksplorasi ribuan anime dan nikmati ulasan serta jadwal rilis terkini.',
+    title: 'Salapink Cinema - Nonton Streaming Film Bioskop & Drama Korea',
+    description: 'Streaming film bioskop dan drama korea terlengkap dengan subtitle Indonesia.',
   },
   robots: {
     index: true,
@@ -51,12 +51,12 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Salapink Animelist',
+    name: 'Salapink Cinema',
     url: 'https://salapink.web.id',
-    description: 'Portal referensi anime dan ulasan komprehensif pop culture Indonesia.',
+    description: 'Nonton streaming film bioskop dan drama korea terlengkap subtitle Indonesia.',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://salapink.web.id/search/{search_term_string}',
+      target: 'https://salapink.web.id/movies/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   }

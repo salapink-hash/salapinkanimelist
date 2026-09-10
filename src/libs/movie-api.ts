@@ -148,6 +148,79 @@ export async function getMovieDetail(id: string | number): Promise<MovieDetail |
   return data;
 }
 
+// Get Korean Dramas (Drakor)
+export async function getKoreanDramas(page: number = 1): Promise<MovieItem[]> {
+  const data = await getTMDBData(
+    `discover/tv`,
+    `with_original_language=ko&sort_by=popularity.desc&page=${page}`
+  );
+  if (!data?.results) return [];
+
+  return data.results.map((item: any) => ({
+    id: item.id,
+    title: item.name || item.title || "Untitled Drama",
+    original_title: item.original_name || item.original_title,
+    overview: item.overview || "",
+    poster_path: item.poster_path,
+    backdrop_path: item.backdrop_path,
+    release_date: item.first_air_date || item.release_date || "",
+    vote_average: item.vote_average || 0,
+    vote_count: item.vote_count || 0,
+    popularity: item.popularity || 0,
+    media_type: "tv",
+  }));
+}
+
+// Get Movies by Genre ID
+export async function getMoviesByGenre(genreId: number, page: number = 1): Promise<MovieItem[]> {
+  const data = await getTMDBData(
+    `discover/movie`,
+    `with_genres=${genreId}&sort_by=popularity.desc&page=${page}`
+  );
+  return data?.results || [];
+}
+
+// Search Both Movies and TV (Drakor/Series)
+export async function searchMedia(query: string, page: number = 1): Promise<MovieItem[]> {
+  if (!query.trim()) return [];
+  const data = await getTMDBData(
+    `search/multi`,
+    `query=${encodeURIComponent(query)}&page=${page}`
+  );
+  if (!data?.results) return [];
+
+  return data.results
+    .filter((item: any) => item.media_type === "movie" || item.media_type === "tv")
+    .map((item: any) => ({
+      id: item.id,
+      title: item.title || item.name || "Untitled",
+      original_title: item.original_title || item.original_name,
+      overview: item.overview || "",
+      poster_path: item.poster_path,
+      backdrop_path: item.backdrop_path,
+      release_date: item.release_date || item.first_air_date || "",
+      vote_average: item.vote_average || 0,
+      vote_count: item.vote_count || 0,
+      popularity: item.popularity || 0,
+      media_type: item.media_type,
+    }));
+}
+
+export const MOVIE_GENRES = [
+  { id: 28, name: "Action" },
+  { id: 12, name: "Adventure" },
+  { id: 16, name: "Animation" },
+  { id: 35, name: "Comedy" },
+  { id: 80, name: "Crime" },
+  { id: 18, name: "Drama" },
+  { id: 14, name: "Fantasy" },
+  { id: 27, name: "Horror" },
+  { id: 9648, name: "Mystery" },
+  { id: 10749, name: "Romance" },
+  { id: 878, name: "Sci-Fi" },
+  { id: 53, name: "Thriller" },
+];
+
 // Helper to get full TMDB Image URL
 export function getTMDBImageUrl(path: string | null | undefined, size: "w500" | "original" | "w780" | "w300" = "w500"): string {
   if (!path) return "/placeholder.png";

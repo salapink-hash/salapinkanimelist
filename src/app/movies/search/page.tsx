@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { searchMovies } from "@/libs/movie-api";
+import { searchMedia, getMoviesByGenre, MOVIE_GENRES, MovieItem } from "@/libs/movie-api";
 import MovieCard from "@/components/Movies/MovieCard";
 import MovieSearchInput from "@/components/Movies/MovieSearchInput";
 
@@ -8,11 +8,23 @@ export const dynamic = "force-dynamic";
 export default async function MovieSearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; genre?: string }>;
 }) {
-  const { q } = await searchParams;
+  const { q, genre } = await searchParams;
   const keyword = q || "";
-  const results = keyword ? await searchMovies(keyword) : [];
+  const genreId = genre ? parseInt(genre, 10) : null;
+
+  let results: MovieItem[] = [];
+  let pageTitle = "Semua Film";
+
+  if (genreId) {
+    const foundGenre = MOVIE_GENRES.find((g) => g.id === genreId);
+    pageTitle = foundGenre ? `Genre: ${foundGenre.name}` : `Genre #${genreId}`;
+    results = await getMoviesByGenre(genreId);
+  } else if (keyword) {
+    pageTitle = `Hasil Pencarian: "${keyword}"`;
+    results = await searchMedia(keyword);
+  }
 
   return (
     <div className="container animate-fade-in" style={{ padding: "2.5rem 1.5rem 4rem 1.5rem", minHeight: "80vh" }}>
@@ -35,10 +47,10 @@ export default async function MovieSearchPage({
             </Link>
           </div>
           <h1 style={{ fontSize: "1.85rem", fontWeight: 800, color: "#fff", margin: 0 }}>
-            Hasil Pencarian: <span className="text-gradient">&ldquo;{keyword}&rdquo;</span>
+            {pageTitle}
           </h1>
           <p style={{ color: "#94a3b8", fontSize: "0.9rem", margin: "0.25rem 0 0 0" }}>
-            Ditemukan {results.length} film untuk kata kunci ini
+            Ditemukan {results.length} judul tayangan
           </p>
         </div>
 
@@ -59,10 +71,10 @@ export default async function MovieSearchPage({
         >
           <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🔍</div>
           <h3 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#fff", marginBottom: "0.5rem" }}>
-            Tidak ada film yang cocok
+            Tidak ada film atau drakor yang cocok
           </h3>
           <p style={{ color: "#94a3b8", maxWidth: "500px", margin: "0 auto 1.5rem auto" }}>
-            Coba gunakan kata kunci bahasa Inggris atau nama judul film yang lebih umum (misal: Spider-Man, Batman, One Piece, Fast & Furious).
+            Coba gunakan kata kunci bahasa Inggris atau nama judul film yang lebih umum (misal: Spider-Man, Batman, Squid Game, Queen of Tears).
           </p>
           <Link
             href="/movies"

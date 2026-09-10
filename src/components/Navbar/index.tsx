@@ -10,7 +10,7 @@ export default function Navbar() {
         {/* Top Row: Logo on left, Search & Profile on right */}
         <div className={styles.topBar}>
           <Link href="/" className={styles.logo}>
-            Salapink<span className="text-gradient">Animelist</span>
+            Salapink<span className="text-gradient">Cinema</span>
           </Link>
 
           {/* Right Tools (Search + Settings Avatar) */}
@@ -42,31 +42,29 @@ export default function Navbar() {
               whiteSpace: "nowrap",
             }}
           >
-            🎬 Cinema
+            🎬 Film Bioskop
           </Link>
           <Link
-            href="/gacha"
+            href="/movies/search?q=korean"
             style={{
-              color: "var(--primary)",
+              color: "#fb7185",
               fontSize: "0.88rem",
               fontWeight: 700,
               textDecoration: "none",
               padding: "0.35rem 0.85rem",
               borderRadius: "999px",
-              background: "rgba(99, 102, 241, 0.12)",
+              background: "rgba(244, 63, 94, 0.12)",
+              border: "1px solid rgba(244, 63, 94, 0.2)",
               whiteSpace: "nowrap",
             }}
           >
-            🎲 Gacha
-          </Link>
-          <Link href="/jadwal" className={styles.navLink}>
-            📅 Jadwal
+            🇰🇷 Drama Korea
           </Link>
           <Link href="/populer" className={styles.navLink}>
             🔥 Populer
           </Link>
           <Link href="/news" className={styles.navLink}>
-            📰 Berita
+            📰 Berita & Sinopsis
           </Link>
         </nav>
       </div>
