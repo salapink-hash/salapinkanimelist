@@ -8,8 +8,8 @@ interface VideoPlayerProps {
   adUrl?: string
 }
 
-// Ganti link ini dengan Direct Link Iklan kamu (Monetag, Adsterra, Shopee Affiliate, dll)
-const DEFAULT_AD_URL = 'https://www.google.com'
+// Direct Link Iklan (Adsterra)
+const DEFAULT_AD_URL = 'https://www.profitableratecpmnetwork.com/r1rawm4why?key=f5d07749e35ff0d63491ae12fbb21aea'
 
 export default function VideoPlayer({ 
   youtubeId, 

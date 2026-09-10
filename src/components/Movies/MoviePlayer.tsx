@@ -53,8 +53,8 @@ const SERVERS: ServerOption[] = [
   },
 ];
 
-// Ganti link ini dengan Direct Link Iklan kamu
-const DEFAULT_AD_URL = "https://www.google.com";
+// Direct Link Iklan (Adsterra)
+const DEFAULT_AD_URL = "https://www.profitableratecpmnetwork.com/r1rawm4why?key=f5d07749e35ff0d63491ae12fbb21aea";
 
 export default function MoviePlayer({ tmdbId, title }: MoviePlayerProps) {
   const [activeServer, setActiveServer] = useState<string>("vidlink");
@@ -324,8 +324,9 @@ export default function MoviePlayer({ tmdbId, title }: MoviePlayerProps) {
           <h4 style={{ fontSize: "0.95rem", fontWeight: 800, color: "#fff", margin: 0, display: "flex", alignItems: "center", gap: "0.5rem", letterSpacing: "0.2px" }}>
             ⚡ PILIH SERVER STREAMING
           </h4>
-          <span style={{ fontSize: "0.78rem", color: "#64748b" }}>
-            *Ganti server jika pemutaran video lambat atau buffering
+          <span style={{ fontSize: "0.78rem", color: "#64748b", textAlign: "right" }}>
+            *Ganti server jika lambat. <br/>
+            <strong style={{ color: "#10b981" }}>Tips:</strong> Klik icon <strong>CC</strong> di dalam pemutar video untuk pilih Subtitle Indonesia.
           </span>
         </div>
 
